@@ -1,0 +1,57 @@
+<head>
+  <style>
+    .image-cropper {
+      width: 150px;
+      height: 150px;
+      position: auto;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    img {
+      display: inline;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<div style="background-color:black;">
+  <h1 mat-dialog-title>MOVIE Details</h1>
+
+  <div
+    mat-dialog-content
+    style="display:flex; flex-direction: row; justify-content: space-between;"
+  >
+    <div class="image-cropper" style="flex-basis: 20% ">
+      <img [src]="data.url" />
+    </div>
+    <div style="flex-basis: 65%;color:yellowgreen;">
+      <dl class="row">
+        <dt class="col-sm-4">Reviewer</dt>
+        <dd class="col-sm-8" *ngIf="data.sex == 'Male'">
+          : {{ "Mr. " + data.fname + " " + data.lname }}
+        </dd>
+        <dd class="col-sm-8" *ngIf="data.sex == 'Female'">
+          : {{ "Ms. " + data.fname + " " + data.lname }}
+        </dd>
+        <dd class="col-sm-8" *ngIf="data.sex == 'Other'">
+          : {{ data.fname + " " + data.lname }}
+        </dd>
+
+        <dt class="col-sm-4 text-truncate">MOVIENAME</dt>
+        <dd class="col-sm-8">: {{ data.qual }}</dd>
+
+        <dt class="col-sm-4 text-truncate">GENRE</dt>
+        <dd class="col-sm-8">: {{ data.pos }}</dd>
+
+        <dt class="col-sm-4 text-truncate">RATING</dt>
+        <dd class="col-sm-8">: {{ data.aadhar }}</dd>
+
+        <dt class="col-sm-4 text-truncate">REVIEW</dt>
+        <dd class="col-sm-8">: {{ data.pan }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

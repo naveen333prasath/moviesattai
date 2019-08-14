@@ -1,0 +1,60 @@
+<img src="assets\blue.jpg" alt="bckgound" class="bg" />
+<div style=" text-align: center;">
+  <div style=" background-color: black;">
+    <form
+      id="addForm"
+      [formGroup]="logForm"
+      (ngSubmit)="onSubmit(logForm.value)"
+      style="margin-top: 250px;"
+    >
+      <div
+        class="field"
+        style="color:yellowgreen;"
+        *ngFor="let field1 of r_Fields"
+      >
+        <label
+          class="col-sm-2"
+          style="background-color:#34d3eb;"
+          [for]="field1.id"
+          >{{ field1.name }} :</label
+        >
+        <input
+          class="col-sm-4"
+          style="background-color:#34d3eb;"
+          [type]="field1.type"
+          [id]="field1.id"
+          [value]="logDetail[field1.id]"
+          [name]="field1.name"
+          [formControlName]="field1.id"
+          (blur)="valid($event)"
+        />
+      </div>
+      <p *ngIf="!flag || !vflag">
+        <ngb-alert [dismissible]="false">
+          <strong>Warning!</strong> {{ alertText }}.
+        </ngb-alert>
+      </p>
+      <button
+        class="btn btn-primary m-2"
+        style="position: relative;
+        font-size: 24px;
+      background-color:#ebb434;
+      padding: 12px 28px;"
+        type="submit"
+      >
+        login</button
+      ><br />
+      <button
+        routerLink="/register"
+        class="btn btn-secondary m-2"
+        style="position: relative;font-size: 24px;
+        background-color:#ebb434;
+        padding: 12px 28px;"
+        type="submit"
+        (click)="flag = true; vflag = true"
+      >
+        Create New Account...
+      </button>
+    </form>
+  </div>
+</div>

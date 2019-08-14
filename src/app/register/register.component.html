@@ -1,0 +1,48 @@
+<img
+  src="assets\maran.jpg"
+  style="position: absolute;"
+  alt="bckgound"
+  class="bg"
+/>
+<div style=" text-align: center;">
+  <form
+    id="addForm"
+    [formGroup]="regForm"
+    (ngSubmit)="onSubmit(regForm.value)"
+    style="margin-top: 85px;
+    align-content: center;"
+  >
+    <div class="field" *ngFor="let field1 of r_Fields">
+      <label
+        class="col-sm-2"
+        [for]="field1.id"
+        style="color:#ebb434; background-origin: content-box;    align-content: center;"
+        >{{ field1.name }} :</label
+      >
+      <input
+        class="col-sm-4"
+        [type]="field1.type"
+        [id]="field1.id"
+        [name]="field1.name"
+        [formControlName]="field1.id"
+        (blur)="valid($event)"
+      />
+    </div>
+
+    <p *ngIf="!flag || !vflag">
+      <ngb-alert [dismissible]="false">
+        <strong>Warning!</strong> {{ alertText }}.
+      </ngb-alert>
+    </p>
+    <button
+      class="btn btn-primary m-2"
+      style="position: relative;
+    font-size: 24px;
+  background-color:#ebb434;
+  padding: 12px 28px;"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>

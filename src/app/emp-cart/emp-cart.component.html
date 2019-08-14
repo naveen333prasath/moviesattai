@@ -1,0 +1,39 @@
+<!--< mat-form-field class="search-form-field">
+    <input matInput type="text" [(ngModel)]="searchVal" (keyup)="searchEmp()" placeholder="Search" >
+    <button mat-button *ngIf="searchVal" matSuffix mat-icon-button aria-label="Clear" (click)="searchVal=''">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field> -->
+<div style="background-color: black;">
+  <div class="row">
+    <div
+      class="card"
+      style="width: 30rem; margin: 70px;background-color:#ffd633"
+      [title]="detail.fname + '\'s Details'"
+      *ngFor="let detail of empDetails; index as empid"
+      (click)="openDialog(empid)"
+    >
+      <img
+        class="card-dp card-img-top"
+        [src]="detail.url"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">
+          {{ detail.qual }}
+
+          <br />
+          <small class="text-muted">{{ detail.pos }}</small>
+
+          <p class="text-muted">{{ detail.fname }}</p>
+
+          <small class="text-muted">{{ detail.mail }}</small>
+        </h5>
+
+        <button mat-mini-fab [routerLink]="['/signup', empid]" title="Edit">
+          <i class="material-icons" style="cursor: pointer">edit</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
